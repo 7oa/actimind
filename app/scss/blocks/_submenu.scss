@@ -1,6 +1,6 @@
 .submenu {
   background-color: #f9f4ff;
-  border-bottom: 1px solid #d6b9ff;
+  border-bottom: 1px solid $violet-light;
   display: none;
   @media screen and (min-width: $w-desktop) {
     position: absolute;
@@ -42,13 +42,13 @@
     display: block;
     padding: 19px 62px 23px;
     font-size: 25px;
-    color: $dark-title;
+    color: $dark-main;
     text-decoration: none;
     transition: 0.5s;
     @media screen and (min-width: $w-desktop) {
       font-size: 16px;
       line-height: 1.2;
-      color: $dark-title;
+      color: $dark-main;
       padding: 0;
       white-space: nowrap;
     }

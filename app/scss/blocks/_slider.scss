@@ -58,7 +58,7 @@
       position: relative;
       &:after {
         content: "NEW";
-        background: #f063b8;
+        background: $purpure;
         box-shadow: 0px 4px 0px #efe3c5;
         border-radius: 0px 0px 4px 4px;
         width: 69px;
@@ -79,20 +79,20 @@
   &__title {
     font-size: 25px;
     line-height: 130%;
-    color: $dark-title;
+    color: $dark-main;
     margin-bottom: 29px;
   }
   &__description {
     font-size: 16px;
     line-height: 164%;
-    color: $dark-text;
+    color: $gray-main;
     margin-bottom: 24px;
   }
   &__link {
     font-size: 16px;
     line-height: 160%;
     font-weight: $bold;
-    color: $dark-title;
+    color: $dark-main;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -136,7 +136,7 @@
       margin: 0 7px;
       width: 10px;
       height: 10px;
-      background-color: #f063b8;
+      background-color: $purpure;
       @media screen and (min-width: $w-tablet) {
         margin: 0 15px 0 0;
       }

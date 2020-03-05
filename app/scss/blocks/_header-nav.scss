@@ -18,7 +18,7 @@
       margin-right: 50px;
     }
     &:first-of-type {
-      border-top: 1px solid #d6b9ff;
+      border-top: 1px solid $violet-light;
       @media screen and (min-width: $w-desktop) {
         border: none;
       }
@@ -29,10 +29,10 @@
     font-size: 27px;
     line-height: 1;
     padding: 24px 32px;
-    color: $dark-title;
+    color: $dark-main;
     text-decoration: none;
     display: block;
-    border-bottom: 1px solid #d6b9ff;
+    border-bottom: 1px solid $violet-light;
     transition: 0.5s;
     @media screen and (min-width: $w-desktop) {
       border: none;
@@ -61,8 +61,8 @@ span.header-nav__link {
     content: "";
     width: 9px;
     height: 9px;
-    border-right: 2px solid $dark-title;
-    border-bottom: 2px solid $dark-title;
+    border-right: 2px solid $dark-main;
+    border-bottom: 2px solid $dark-main;
     position: absolute;
     right: 34px;
     top: 32px;

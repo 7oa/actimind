@@ -7,7 +7,7 @@
     font-weight: $bold;
     font-size: 35px;
     line-height: 130%;
-    color: $dark-title;
+    color: $dark-main;
     text-align: center;
     margin-bottom: 41px;
     @media screen and (min-width: $w-mobile) {
@@ -23,6 +23,6 @@
     line-height: 160%;
     max-width: 649px;
     margin: 0 auto;
-    color: $dark-text;
+    color: $gray-main;
   }
 }
