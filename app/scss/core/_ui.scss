@@ -1,0 +1,75 @@
+.logo {
+  display: flex;
+  align-items: flex-end;
+  span {
+    border-radius: 10px;
+    display: block;
+    &:nth-child(1) {
+      width: 20px;
+      height: 20px;
+      margin-right: 9px;
+    }
+    &:nth-child(2) {
+      width: 20px;
+      height: 35px;
+    }
+  }
+  &--colored {
+    span {
+      &:nth-child(1) {
+        background-color: $violet;
+      }
+      &:nth-child(2) {
+        background-color: $purpure;
+      }
+    }
+  }
+  &--white {
+    span {
+      background-color: #fff;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  background-color: $white;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.button {
+  color: $white;
+  transition: 0.5s;
+  &--yellow {
+    background-color: $yellow-button;
+    &:hover {
+      background-color: $yellow-hover;
+    }
+  }
+  &--violet {
+    background-color: $violet;
+    &:hover {
+      background-color: $violet-hover;
+    }
+  }
+  &--s-size {
+    width: 148px;
+    height: 48px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: $medium;
+  }
+  &--m-size {
+    width: 180px;
+    height: 60px;
+    border-radius: 30px;
+    font-weight: $medium;
+    font-size: 18px;
+  }
+}

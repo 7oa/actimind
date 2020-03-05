@@ -1,0 +1,20 @@
+@import "core/fonts";
+@import "core/normalize";
+@import "core/vars";
+@import "core/keyframes";
+@import "core/base";
+@import "core/page";
+@import "core/ui";
+
+@import "core/header";
+@import "blocks/burger";
+@import "blocks/menu";
+@import "blocks/header-nav";
+@import "blocks/submenu";
+
+@import "core/footer";
+@import "blocks/footer-sign-up";
+@import "blocks/footer-nav";
+
+@import "plugins/_swiper.min";
+@import "blocks/slider";

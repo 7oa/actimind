@@ -1,0 +1,32 @@
+.menu {
+  display: none;
+  position: absolute;
+  top: 89px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  @media screen and (min-width: $w-desktop) {
+    position: static;
+    box-shadow: none;
+    display: flex !important;
+  }
+  &__nav {
+    flex-grow: 1;
+  }
+  &__sign-up {
+    display: flex;
+    justify-content: center;
+    padding: 44px 0;
+    @media screen and (min-width: $w-desktop) {
+      display: block;
+      padding: 0;
+    }
+  }
+  &.open {
+    display: block;
+    animation: fadeIn 0.5s;
+  }
+}

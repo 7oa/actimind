@@ -1,0 +1,28 @@
+.title {
+  margin-bottom: 54px;
+  @media screen and (min-width: $w-mobile) {
+    margin-bottom: 56px;
+  }
+  &__title {
+    font-weight: $bold;
+    font-size: 35px;
+    line-height: 130%;
+    color: $dark-title;
+    text-align: center;
+    margin-bottom: 41px;
+    @media screen and (min-width: $w-mobile) {
+      font-size: 40px;
+    }
+    @media screen and (min-width: $w-tablet) {
+      margin-bottom: 37px;
+    }
+  }
+  &__description {
+    text-align: center;
+    font-size: 23px;
+    line-height: 160%;
+    max-width: 649px;
+    margin: 0 auto;
+    color: $dark-text;
+  }
+}

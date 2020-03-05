@@ -1,0 +1,51 @@
+html,
+body {
+  height: 100%;
+  background-color: $white;
+}
+
+body {
+  font-family: $f-Roboto;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  &:focus {
+    outline: none;
+  }
+}
+.wrapper {
+  flex-grow: 1;
+  padding-top: 51px;
+  padding-bottom: 73px;
+  @media screen and (min-width: $w-mobile) {
+    padding-top: 75px;
+    padding-bottom: 92px;
+  }
+  @media screen and (min-width: $w-tablet) {
+    padding-top: 43px;
+  }
+  @media screen and (min-width: $w-desktop) {
+    padding-top: 95px;
+    padding-bottom: 151px;
+  }
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 1320px;
+  padding: 0 20px;
+  @media screen and (min-width: $w-tablet) {
+    padding: 0 24px;
+  }
+  @media screen and (min-width: $w-desktop) {
+    padding: 0 32px;
+  }
+}

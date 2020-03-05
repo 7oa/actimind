@@ -1,0 +1,47 @@
+.footer {
+  background-color: $violet;
+  &__container {
+    padding-top: 58px;
+    padding-bottom: 52px;
+    @media screen and (min-width: $w-tablet) {
+      display: flex;
+      padding-top: 52px;
+      padding-bottom: 37px;
+    }
+    @media screen and (min-width: $w-desktop) {
+      padding-top: 74px;
+      padding-bottom: 75px;
+    }
+  }
+  &__top-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    @media screen and (min-width: $w-tablet) {
+      flex-grow: 1;
+      justify-content: flex-start;
+      margin-bottom: 0;
+    }
+  }
+  &__logo {
+    padding-left: 5px;
+    @media screen and (min-width: $w-tablet) {
+      margin-right: 71px;
+      padding-left: 0;
+      padding-top: 6px;
+    }
+  }
+  &__menu {
+    @media screen and (min-width: $w-desktop) {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &__form {
+    @media screen and (min-width: $w-desktop) {
+      flex-grow: 1;
+      max-width: 600px;
+    }
+  }
+}

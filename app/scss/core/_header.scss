@@ -1,0 +1,19 @@
+.header {
+  &__container {
+    padding-top: 25px;
+
+    @media screen and (min-width: $w-desktop) {
+      padding-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+  }
+  &__menu {
+    @media screen and (min-width: $w-desktop) {
+      margin-left: 131px;
+      flex-grow: 1;
+    }
+  }
+}

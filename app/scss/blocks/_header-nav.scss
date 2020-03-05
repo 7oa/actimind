@@ -1,0 +1,92 @@
+.header-nav {
+  @media screen and (min-width: $w-desktop) {
+    height: 100%;
+  }
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @media screen and (min-width: $w-desktop) {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+  &__item {
+    @media screen and (min-width: $w-desktop) {
+      position: relative;
+      margin-right: 50px;
+    }
+    &:first-of-type {
+      border-top: 1px solid #d6b9ff;
+      @media screen and (min-width: $w-desktop) {
+        border: none;
+      }
+    }
+  }
+  &__link {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 1;
+    padding: 24px 32px;
+    color: $dark-title;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #d6b9ff;
+    transition: 0.5s;
+    @media screen and (min-width: $w-desktop) {
+      border: none;
+      font-size: 18px;
+      line-height: 160%;
+      padding: 0;
+    }
+    &:hover {
+      color: $violet;
+    }
+  }
+}
+span.header-nav__link {
+  cursor: pointer;
+  position: relative;
+  @media screen and (min-width: $w-desktop) {
+    display: inline-block;
+    padding-right: 14px;
+    &:hover {
+      &:after {
+        border-color: $violet;
+      }
+    }
+  }
+  &:after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid $dark-title;
+    border-bottom: 2px solid $dark-title;
+    position: absolute;
+    right: 34px;
+    top: 32px;
+    transform: rotate(-45deg);
+    transition: 0.5s;
+    @media screen and (min-width: $w-desktop) {
+      right: 0px;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      transform: rotate(45deg);
+    }
+  }
+  &.open {
+    &:after {
+      transform: rotate(45deg);
+    }
+    @media screen and (min-width: $w-desktop) {
+      color: $violet;
+      &:after {
+        border-color: $violet;
+        transform: rotate(-135deg);
+        top: 11px;
+      }
+    }
+  }
+}

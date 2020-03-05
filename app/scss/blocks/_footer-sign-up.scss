@@ -1,0 +1,21 @@
+.footer-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: $w-tablet) {
+    flex-direction: row;
+  }
+  &__input {
+    margin-bottom: 22px;
+    width: 280px;
+    @media screen and (min-width: $w-tablet) {
+      width: 247px;
+      margin-right: 37px;
+      margin-bottom: 0;
+    }
+    @media screen and (min-width: $w-desktop) {
+      width: 100%;
+      margin-right: 33px;
+    }
+  }
+}

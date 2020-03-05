@@ -1,0 +1,63 @@
+.submenu {
+  background-color: #f9f4ff;
+  border-bottom: 1px solid #d6b9ff;
+  display: none;
+  @media screen and (min-width: $w-desktop) {
+    position: absolute;
+    top: 44px;
+    left: -22px;
+    background: $white;
+    border: 1px solid $violet;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 26px 12px 24px;
+    box-shadow: 0px 4px 0px rgba(156, 105, 226, 0.15);
+    &:after {
+      content: "";
+      border-left: 1px solid $violet;
+      border-top: 1px solid $violet;
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      top: -10px;
+      left: 61px;
+      transform: rotate(45deg);
+      background-color: $white;
+    }
+  }
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    @media screen and (min-width: $w-desktop) {
+      padding: 5px 0 11px;
+      &:last-of-type {
+        padding-bottom: 3px;
+      }
+    }
+  }
+  &__link {
+    display: block;
+    padding: 19px 62px 23px;
+    font-size: 25px;
+    color: $dark-title;
+    text-decoration: none;
+    transition: 0.5s;
+    @media screen and (min-width: $w-desktop) {
+      font-size: 16px;
+      line-height: 1.2;
+      color: $dark-title;
+      padding: 0;
+      white-space: nowrap;
+    }
+    &:hover {
+      color: $violet;
+    }
+  }
+  &.open {
+    display: block;
+    animation: fadeIn 0.5s;
+  }
+}
