@@ -1,22 +1,19 @@
-var gulp = require("gulp"),
-  connect = require("gulp-connect"),
-  opn = require("opn"),
-  sass = require("gulp-sass"),
-  pug = require("gulp-pug"),
-  rimraf = require("rimraf"),
-  uglify = require("gulp-uglify-es").default,
-  autoprefixer = require("gulp-autoprefixer"),
-  cssmin = require("gulp-cssmin"),
-  watch = require("gulp-watch"),
-  rigger = require("gulp-rigger"),
-  cache = require("gulp-cache"),
-  browserSync = require("browser-sync"),
-  pugbem = require("gulp-pugbem"),
-  babel = require("gulp-babel"),
-  imagemin = require("gulp-imagemin"),
-  pngquant = require("imagemin-pngquant");
+const { src, dest, parallel, series, watch } = require("gulp");
+const sass = require("gulp-sass");
+const pug = require("gulp-pug");
+const rimraf = require("rimraf");
+const uglify = require("gulp-uglify-es").default;
+const autoprefixer = require("gulp-autoprefixer");
+const cssmin = require("gulp-cssmin");
+const rigger = require("gulp-rigger");
+const cache = require("gulp-cache");
+const browserSync = require("browser-sync").create();
+const pugbem = require("gulp-pugbem");
+const babel = require("gulp-babel");
+const imagemin = require("gulp-imagemin");
+const pngquant = require("imagemin-pngquant");
 
-var dest_path = "public";
+const dest_path = "public";
 pugbem.m = "--";
 
 function log(error) {
@@ -33,37 +30,34 @@ function log(error) {
   this.end();
 }
 
-gulp.task("pug", function() {
-  gulp
-    .src("app/templates/*.pug")
+function html() {
+  return src("app/templates/*.pug")
     .pipe(pug({ pretty: true, plugins: [pugbem] }))
     .on("error", log)
-    .pipe(gulp.dest(dest_path + "/"))
+    .pipe(dest(`${dest_path}/`))
     .pipe(browserSync.stream());
-});
+}
 
-var autoprefixerOptions = {
-  overrideBrowserslist: ["> 1%", "ie 11"]
-};
-
-gulp.task("sass", function() {
-  gulp
-    .src("app/scss/style.scss")
+function css() {
+  return src("app/scss/style.scss")
     .pipe(
       sass().on("error", function(error) {
         console.log(error);
       })
     )
     .pipe(sass().on("error", sass.logError))
-    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(
+      autoprefixer({
+        overrideBrowserslist: ["> 1%", "ie 11"]
+      })
+    )
     .pipe(cssmin())
-    .pipe(gulp.dest(dest_path))
+    .pipe(dest(dest_path))
     .pipe(browserSync.stream());
-});
+}
 
-gulp.task("js", function() {
-  gulp
-    .src("app/js/script.js")
+function js() {
+  return src("app/js/script.js", { sourcemaps: true })
     .pipe(rigger())
     .pipe(
       babel({
@@ -78,13 +72,11 @@ gulp.task("js", function() {
       })
     )
     .pipe(uglify())
-    .pipe(gulp.dest(dest_path + "/js/"))
+    .pipe(dest(`${dest_path}/js/`, { sourcemaps: true }))
     .pipe(browserSync.stream());
-});
-
-gulp.task("image", function() {
-  gulp
-    .src("./app/img/**/*.*")
+}
+function img() {
+  return src("./app/img/**/*.*")
     .pipe(
       cache(
         imagemin({
@@ -95,53 +87,35 @@ gulp.task("image", function() {
         })
       )
     )
-    .pipe(gulp.dest(dest_path + "/img/"))
+    .pipe(dest(`${dest_path}/img/`))
     .pipe(browserSync.stream());
-});
+}
 
-gulp.task("build", ["pug", "sass", "js", "image"]);
-
-gulp.task("clean", function(cb) {
-  rimraf(dest_path, cb);
-});
-
-gulp.task("clearcache", function() {
-  return cache.clearAll();
-});
-
-gulp.task("watch", function() {
-  watch(["./app/img/**/*.*"], function(event, cb) {
-    gulp.start("image");
-  });
-  watch(["./app/templates/**/*.pug"], function(event, cb) {
-    gulp.start("pug");
-  });
-  watch(["./app/scss/**/*.scss"], function(event, cb) {
-    setTimeout(function() {
-      gulp.start("sass");
-    }, 500);
-  });
-  watch(["./app/js/**/*.js"], function(event, cb) {
-    gulp.start("js");
-  });
-});
-
-gulp.task("serv_livereload", function() {
-  connect.server({
-    root: dest_path,
-    livereload: true,
-    port: 8888
-  });
-  opn("http://localhost:8888");
-});
-
-browserSync.create();
-gulp.task("server", function() {
+function server() {
   browserSync.init({
     server: dest_path,
     browser: "chrome",
     notify: false
   });
-});
+}
 
-gulp.task("default", ["server", "watch"]);
+function watcher() {
+  server();
+  watch("./app/img/**/*.*", img);
+  watch("./app/templates/**/*.pug", html);
+  watch("./app/scss/**/*.scss", css);
+  watch("./app/js/**/*.js", js);
+}
+
+function clean(cb) {
+  return rimraf(dest_path, cb);
+}
+
+exports.js = js;
+exports.css = css;
+exports.html = html;
+exports.img = img;
+exports.server = server;
+exports.watcher = watcher;
+exports.build = series(clean, parallel(html, css, js, img));
+exports.default = watcher;
