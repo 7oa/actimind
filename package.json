@@ -22,7 +22,7 @@
     "gulp-uglify-es": "^2.0.0",
     "gulp-watch": "^5.0.0",
     "imagemin-pngquant": "^8.0.0",
-    "pug": "^2.0.0-beta11",
+    "pug": "^3.0.1",
     "rimraf": "^3.0.2"
   },
   "repository": {
